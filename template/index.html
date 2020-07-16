@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+
+<body>
+<div>
+    <h1 style="text-align: center; color: #d32b55;">Graph for Weekly Price</h1>
+    <canvas id="myChart"></canvas>
+</div>
+    <h1 style="text-align: center; color: #d32b55;">Graph for Yearly Price(Last 5 Year)</h1>
+    <canvas id="myChart2"></canvas>
+</body>
+
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: {{date|safe}},
+        datasets: [{
+            label: 'Debit and Credit Card Total Expenditure Amount(WEEKLY)',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: {{deger|safe}}
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: ['2015','2016','2017','2018','2019'],
+        datasets: [{
+            label: 'Total Amount(YEARS for 52 WEEKS)',
+            backgroundColor: 'fillPattern',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [{{df|safe}},{{df1|safe}},{{df2|safe}},{{df3|safe}},{{df4|safe}}]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+</script>
+</html>
